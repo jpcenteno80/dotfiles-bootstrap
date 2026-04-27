@@ -17,10 +17,14 @@ err()  { printf "\033[1;31m[bootstrap]\033[0m %s\n" "$1" >&2; }
 # The flag is exported so install.sh inherits it.
 # ---------------------------------------------------------------------------
 export DOTFILES_NO_SUDO="${DOTFILES_NO_SUDO:-0}"
+export DOTFILES_NO_CLAUDE="${DOTFILES_NO_CLAUDE:-0}"
 if [ "$DOTFILES_NO_SUDO" = "1" ]; then
     info "Running in no-sudo mode (user-space installs)."
 else
     info "Running in sudo mode (set DOTFILES_NO_SUDO=1 to skip sudo)."
+fi
+if [ "$DOTFILES_NO_CLAUDE" = "1" ]; then
+    info "Claude Code install will be skipped (DOTFILES_NO_CLAUDE=1)."
 fi
 
 # ---------------------------------------------------------------------------
